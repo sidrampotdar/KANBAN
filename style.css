@@ -77,14 +77,20 @@ section {
   padding: 24px;
   display: flex;
   gap: 16px;
-  height: calc(100vh - 65px);
+  height: auto;
+ min-height: calc(100vh - 65px);
   overflow-x: auto;
+    overflow-y: visible;  
+
+    align-items: flex-start;   /* CRITICAL */
 }
 
 /* ================= COLUMNS ================= */
 .task-column {
   flex: 1;
   min-width: 300px;
+  min-height: 500px;
+    height: auto; 
   background: var(--column-bg);
   border-radius: var(--radius);
   padding: 16px;
