@@ -46,7 +46,6 @@ function loadData() {
 }
 loadData();
 
-
 /* ---------------- TASK DRAG ---------------- */
 function makeTaskDraggable(task) {
   task.addEventListener("dragstart", () => {
@@ -102,6 +101,8 @@ bg.addEventListener("click", () => {
   modal.classList.remove("active");
 });
 
+
+
 /* ---------------- ADD TASK ---------------- */
 addBtn.addEventListener("click", () => {
   const taskTitle = taskInput.value.trim();
@@ -123,6 +124,11 @@ addBtn.addEventListener("click", () => {
 
   task.querySelector(".delete-btn").addEventListener("click", () => {
     task.remove();
+    columns.forEach((col) => {
+      const tasks = col.querySelectorAll(".task");
+      const count = col.querySelector(".right");
+      count.textContent = tasks.length;
+    });
     saveData();
   });
 
@@ -156,4 +162,5 @@ function saveData() {
   });
 
   localStorage.setItem("data", JSON.stringify(taskData));
+  
 }
